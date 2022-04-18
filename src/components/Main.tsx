@@ -5,7 +5,7 @@ function Main() {
     <div className="min-h-screen bg-slate-100">
       <div className="flex flex-col flex-auto justify-center place-items-center h-screen">
         <header>
-          <h1 className="font-mono text-4xl text-grey-600 font-bold h-10 pl-2 w-60">
+          <h1 className="font-mono text-4xl text-grey-600 font-bold h-10 pl-2">
             Ben Nagoshi
           </h1>
           <p className="font-mono text-3x1 text-grey-600 w-60 pl-3">
