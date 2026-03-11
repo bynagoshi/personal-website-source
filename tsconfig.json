@@ -18,6 +18,12 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
+    "types": [
+      "jest",
+      "node",
+      "react",
+      "react-dom"
+    ],
     "jsx": "react-jsx"
   },
   "include": [
