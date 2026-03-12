@@ -24,7 +24,7 @@ const PROFILE = {
       accent: "#c89b3c",
     },
     {
-      name: "LoL Draft Predictor",
+      name: "League of Legends Draft Predictor",
       status: "",
       description:
         "ML model predicting match outcomes from champion selections. Trained on 20,000 matches from the Riot Games API with Selenium scraping.",
