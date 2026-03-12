@@ -30,15 +30,15 @@ html {
     radial-gradient(ellipse at 80% 80%, rgba(200, 155, 60, 0.06) 0%, transparent 55%),
     repeating-linear-gradient(
       0deg, transparent, transparent 51px,
-      rgba(120, 90, 40, 0.05) 51px, rgba(120, 90, 40, 0.05) 52px
+      rgba(120, 90, 40, 0.09) 51px, rgba(120, 90, 40, 0.09) 52px
     ),
     repeating-linear-gradient(
       60deg, transparent, transparent 51px,
-      rgba(120, 90, 40, 0.05) 51px, rgba(120, 90, 40, 0.05) 52px
+      rgba(120, 90, 40, 0.09) 51px, rgba(120, 90, 40, 0.09) 52px
     ),
     repeating-linear-gradient(
       -60deg, transparent, transparent 51px,
-      rgba(120, 90, 40, 0.05) 51px, rgba(120, 90, 40, 0.05) 52px
+      rgba(120, 90, 40, 0.09) 51px, rgba(120, 90, 40, 0.09) 52px
     );
 }
 

@@ -14,6 +14,7 @@ const PROFILE = {
         "Startup discovery engine identifying early-stage companies via automated job-posting and community data ingestion with semantic search and heuristic scoring.",
       tags: ["Python", "NLP", "SQL"],
       accent: "#0bc4e3",
+      href: "https://github.com/bynagoshi/startup-search",
     },
     {
       name: "Multi-user Whiteboard",
@@ -22,6 +23,7 @@ const PROFILE = {
         "Real-time collaborative whiteboard built in Godot using SpacetimeDB. Supports simultaneous drawing, color/pen controls, and undo/redo.",
       tags: ["Godot", "C#", "SpacetimeDB"],
       accent: "#c89b3c",
+      href: "https://github.com/bynagoshi/whiteboard",
     },
     {
       name: "League of Legends Draft Predictor",
@@ -30,6 +32,7 @@ const PROFILE = {
         "ML model predicting match outcomes from champion selections. Trained on 20,000 matches from the Riot Games API with Selenium scraping.",
       tags: ["Python", "ML", "Selenium", "SQL"],
       accent: "#9b72cf",
+      href: "https://github.com/bynagoshi/draftprediction",
     },
   ],
   skills: {
@@ -69,11 +72,11 @@ const PROFILE = {
 const C = {
   dark: "#010a13",
   panel: "#0a1628",
-  panelBorder: "#1e2d45",
+  panelBorder: "#2e4568",
   gold: "#c89b3c",
   goldLight: "#f0e6d3",
   blue: "#0bc4e3",
-  muted: "#8b9bb4",
+  muted: "#d4e8f8",
 };
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
@@ -191,13 +194,38 @@ function SectionLabel({ eyebrow, title }: { eyebrow: string; title: string }) {
   );
 }
 
-function Tag({ label, color = C.gold }: { label: string; color?: string }) {
+function lightenHex(hex: string, amount: number) {
+  const cleaned = hex.replace("#", "");
+  if (cleaned.length !== 6) return hex;
+  const value = Number.parseInt(cleaned, 16);
+  if (Number.isNaN(value)) return hex;
+
+  const r = (value >> 16) & 255;
+  const g = (value >> 8) & 255;
+  const b = value & 255;
+
+  const mix = (channel: number) =>
+    Math.min(255, Math.round(channel + (255 - channel) * amount));
+
+  const toHex = (channel: number) => mix(channel).toString(16).padStart(2, "0");
+  return `#${toHex(r)}${toHex(g)}${toHex(b)}`;
+}
+
+function Tag({
+  label,
+  color = C.gold,
+  textColor,
+}: {
+  label: string;
+  color?: string;
+  textColor?: string;
+}) {
   return (
     <span
       style={{
-        background: `${color}12`,
-        border: `1px solid ${color}35`,
-        color: `${color}dd`,
+        background: `${color}22`,
+        border: `1px solid ${color}66`,
+        color: textColor ?? `${color}ff`,
         fontSize: "0.7rem",
         padding: "2px 9px",
         borderRadius: 2,
@@ -219,78 +247,106 @@ function ProjectsSection() {
     <div style={{ marginBottom: 44 }}>
       <SectionLabel eyebrow="Selected Work" title="Projects" />
       <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
-        {PROFILE.projects.map(({ name, status, description, tags, accent }) => {
-          const isHovered = hovered === name;
-          return (
-            <div
-              key={name}
-              onMouseEnter={() => setHovered(name)}
-              onMouseLeave={() => setHovered(null)}
-              style={{
-                position: "relative",
-                background: `linear-gradient(145deg, ${C.panel} 0%, #0d1f35 100%)`,
-                border: `1px solid ${isHovered ? accent : C.panelBorder}`,
-                borderRadius: 3,
-                padding: "18px 22px",
-                transition: "border-color 0.22s, box-shadow 0.22s",
-                boxShadow: isHovered ? `0 0 20px ${accent}20` : "none",
-              }}
-            >
-              <PanelCorners color={isHovered ? accent : C.panelBorder} />
-              <TopBar color={accent} />
-              <div
+        {PROFILE.projects.map(
+          ({ name, status, description, tags, accent, href }) => {
+            const isHovered = hovered === name;
+            const tagTextColor =
+              name === "League of Legends Draft Predictor"
+                ? lightenHex(accent, 0.65)
+                : lightenHex(accent, 0.45);
+            return (
+              <a
+                key={name}
+                href={href}
+                target="_blank"
+                rel="noreferrer"
+                onMouseEnter={() => setHovered(name)}
+                onMouseLeave={() => setHovered(null)}
                 style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 10,
-                  marginBottom: 8,
+                  position: "relative",
+                  display: "block",
+                  background: `linear-gradient(145deg, ${C.panel} 0%, #0d1f35 100%)`,
+                  border: `1px solid ${isHovered ? accent : C.panelBorder}`,
+                  borderRadius: 3,
+                  padding: "18px 22px",
+                  transition: "border-color 0.22s, box-shadow 0.22s",
+                  boxShadow: isHovered ? `0 0 20px ${accent}20` : "none",
+                  textDecoration: "none",
+                  cursor: "pointer",
                 }}
               >
-                <span
+                <PanelCorners color={isHovered ? accent : C.panelBorder} />
+                <TopBar color={accent} />
+                <div
                   style={{
-                    fontFamily: "'Cinzel', serif",
-                    color: isHovered ? accent : C.goldLight,
-                    fontWeight: 700,
-                    fontSize: "0.92rem",
-                    transition: "color 0.22s",
+                    display: "flex",
+                    alignItems: "center",
+                    gap: 10,
+                    marginBottom: 8,
                   }}
                 >
-                  {name}
-                </span>
-                {status && (
                   <span
                     style={{
-                      background: `${accent}18`,
-                      border: `1px solid ${accent}40`,
-                      color: accent,
-                      fontSize: "0.65rem",
-                      padding: "1px 7px",
-                      borderRadius: 2,
-                      letterSpacing: "0.08em",
+                      fontFamily: "'Cinzel', serif",
+                      color: isHovered ? accent : C.goldLight,
+                      fontWeight: 700,
+                      fontSize: "0.92rem",
+                      transition: "color 0.22s",
                     }}
                   >
-                    {status}
+                    {name}
                   </span>
-                )}
-              </div>
-              <p
-                style={{
-                  color: C.muted,
-                  fontSize: "0.82rem",
-                  lineHeight: 1.65,
-                  margin: "0 0 12px",
-                }}
-              >
-                {description}
-              </p>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
-                {tags.map((t) => (
-                  <Tag key={t} label={t} color={accent} />
-                ))}
-              </div>
-            </div>
-          );
-        })}
+                  {status && (
+                    <span
+                      style={{
+                        background: `${accent}18`,
+                        border: `1px solid ${accent}40`,
+                        color: accent,
+                        fontSize: "0.65rem",
+                        padding: "1px 7px",
+                        borderRadius: 2,
+                        letterSpacing: "0.08em",
+                      }}
+                    >
+                      {status}
+                    </span>
+                  )}
+                  <span
+                    style={{
+                      marginLeft: "auto",
+                      color: isHovered ? accent : `${C.muted}60`,
+                      fontSize: "0.9rem",
+                      transition: "color 0.22s, transform 0.22s",
+                      transform: isHovered ? "translateX(3px)" : "none",
+                    }}
+                  >
+                    →
+                  </span>
+                </div>
+                <p
+                  style={{
+                    color: C.muted,
+                    fontSize: "0.82rem",
+                    lineHeight: 1.65,
+                    margin: "0 0 12px",
+                  }}
+                >
+                  {description}
+                </p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+                  {tags.map((t) => (
+                    <Tag
+                      key={t}
+                      label={t}
+                      color={accent}
+                      textColor={tagTextColor}
+                    />
+                  ))}
+                </div>
+              </a>
+            );
+          },
+        )}
       </div>
     </div>
   );
@@ -315,7 +371,7 @@ function SkillsSection() {
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
             {PROFILE.skills.languages.map((s) => (
-              <Tag key={s} label={s} />
+              <Tag key={s} label={s} textColor={lightenHex(C.gold, 0.54)} />
             ))}
           </div>
         </div>
@@ -333,7 +389,12 @@ function SkillsSection() {
           </p>
           <div style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
             {PROFILE.skills.tools.map((s) => (
-              <Tag key={s} label={s} color={C.blue} />
+              <Tag
+                key={s}
+                label={s}
+                color={C.blue}
+                textColor={lightenHex(C.blue, 0.54)}
+              />
             ))}
           </div>
         </div>
