@@ -45,6 +45,12 @@ const PROFILE = {
   },
   social: [
     {
+      label: "Email",
+      href: "mailto:bynagoshi@gmail.com",
+      description: "bynagoshi@gmail.com",
+      color: "#c89b3c",
+    },
+    {
       label: "GitHub",
       href: "https://github.com/bynagoshi",
       description: "Projects & open source work",
@@ -53,7 +59,7 @@ const PROFILE = {
     {
       label: "LinkedIn",
       href: "https://www.linkedin.com/in/benjamin-nagoshi/",
-      description: "Connect with me",
+      description: "Connect professionally",
       color: "#0bc4e3",
     },
   ],
@@ -340,7 +346,7 @@ function ConnectSection() {
   const [hovered, setHovered] = useState<string | null>(null);
   return (
     <div style={{ marginBottom: 0 }}>
-      <SectionLabel eyebrow="Find me at" title="Connect" />
+      <SectionLabel eyebrow="Links & Contact" title="Connect" />
       <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
         {PROFILE.social.map(({ label, href, description, color }) => {
           const isHovered = hovered === label;
