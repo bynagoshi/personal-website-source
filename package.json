@@ -28,7 +28,6 @@
     "react-scripts": "5.0.1",
     "stream": "^0.0.3",
     "tiny-invariant": "^1.2.0",
-    "typescript": "^5.9.3",
     "web-vitals": "^5.1.0",
     "zustand": "^5.0.11"
   },
