@@ -32,8 +32,8 @@ const PROFILE = {
         "ML model predicting match outcomes from champion selections. Trained on 20,000 matches from the Riot Games API with Selenium scraping.",
       tags: ["Python", "ML", "Selenium", "SQL"],
       accent: "#9b72cf",
-      href: "https://github.com/bynagoshi/draftprediction",
-    },
+      href: "https://draftprediction.vercel.app",
+    }, 
   ],
   skills: {
     languages: ["Python", "C++", "C#", "Java", "JavaScript/Typescript", "SQL"],
