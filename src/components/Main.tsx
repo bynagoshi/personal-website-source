@@ -11,7 +11,7 @@ const PROFILE = {
       name: "League of Legends Draft Predictor",
       status: "",
       description:
-        "ML model predicting match outcomes from champion selections. Trained on 20,000 matches from the Riot Games API with Selenium scraping.",
+        "ML model predicting match outcomes from champion selections. Trained on 80,000 matches from the Riot Games API with Selenium scraping.",
       tags: ["Python", "ML", "Selenium", "SQL"],
       accent: "#9b72cf",
       href: "https://draftprediction.vercel.app",
