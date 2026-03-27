@@ -8,6 +8,15 @@ const PROFILE = {
     "Recent Masters CS graduate from the University of Florida, passionate about full-stack development, systems, and anything fun to build.",
   projects: [
     {
+      name: "League of Legends Draft Predictor",
+      status: "",
+      description:
+        "ML model predicting match outcomes from champion selections. Trained on 20,000 matches from the Riot Games API with Selenium scraping.",
+      tags: ["Python", "ML", "Selenium", "SQL"],
+      accent: "#9b72cf",
+      href: "https://draftprediction.vercel.app",
+    },
+    {
       name: "Startup Search",
       status: "",
       description:
@@ -25,15 +34,6 @@ const PROFILE = {
       accent: "#c89b3c",
       href: "https://github.com/bynagoshi/whiteboard",
     },
-    {
-      name: "League of Legends Draft Predictor",
-      status: "",
-      description:
-        "ML model predicting match outcomes from champion selections. Trained on 20,000 matches from the Riot Games API with Selenium scraping.",
-      tags: ["Python", "ML", "Selenium", "SQL"],
-      accent: "#9b72cf",
-      href: "https://draftprediction.vercel.app",
-    }, 
   ],
   skills: {
     languages: ["Python", "C++", "C#", "Java", "JavaScript/Typescript", "SQL"],
