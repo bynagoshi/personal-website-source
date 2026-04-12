@@ -5,13 +5,13 @@ const PROFILE = {
   name: "Ben Nagoshi",
   title: "Software Engineer",
   about:
-    "Recent Masters CS graduate from the University of Florida, passionate about full-stack development, systems, and anything fun to build.",
+    "Masters CS graduate from the University of Florida, passionate about full-stack development, AI, and ML.",
   projects: [
     {
       name: "League of Legends Draft Predictor",
       status: "",
       description:
-        "ML model predicting match outcomes from champion selections. Trained on 80,000 matches from the Riot Games API with Selenium scraping.",
+        "ML model predicting match outcomes from champion selections. Trained on 80,000 matches from the Riot Games API with Selenium scraping. Preliminary 65% accuracy predicting professional Esports matches.",
       tags: ["Python", "ML", "Selenium", "SQL"],
       accent: "#9b72cf",
       href: "https://draftprediction.vercel.app",
